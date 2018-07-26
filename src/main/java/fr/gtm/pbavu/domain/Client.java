@@ -1,6 +1,7 @@
 package fr.gtm.pbavu.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,22 +12,26 @@ import javax.persistence.Id;
  * @author Adminl
  *
  */
-@javax.persistence.Entity
-public class Client implements Entity {
+@Entity
+public class Client implements fr.gtm.pbavu.domain.Entity {
 
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column
+	
+	@Column(nullable=true)
 	private String mail;
+	
 	@Column
 	private String name;
-	@Column
+	
+	@Column(nullable=true)
 	private String numero;
 	@Column
 	private String prenom;
-	@Column
+	
+	@Column(nullable=true)
 	private String telephone;
 
 	public Client() {
