@@ -9,6 +9,8 @@
   <servlet-mapping>
     <servlet-name>application-context</servlet-name>
     <url-pattern>*.html</url-pattern>
+    <url-pattern>/api/*</url-pattern>
+    
   </servlet-mapping>
   <filter>
     <filter-name>Force UTF8 Filter</filter-name>
