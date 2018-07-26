@@ -3,8 +3,17 @@ package fr.gtm.pbavu.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.gtm.pbavu.domain.Sondage;
 
+/**
+ *
+ * @author AZERI-VALLETTE-USSUNET
+ *
+ */
+
+@Service
 public class SondageService extends CRUDService<Sondage> {
 
 	public Sondage getActualSondage(final LocalDate actualDate) {

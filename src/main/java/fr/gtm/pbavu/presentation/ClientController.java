@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fr.gtm.pbavu.domain.Client;
 import fr.gtm.pbavu.service.ClientService;
 
+/**
+ * Classe représentant le web service de la classe Client.
+ *
+ * @author AZERI-VALLETTE-USSUNET
+ *
+ */
+
 @Controller
 @RequestMapping("/client")
 public class ClientController {
@@ -24,9 +31,13 @@ public class ClientController {
 
 	@Autowired
 	private ClientService service;
-	
-	
 
+	/**
+	 * 
+	 * @param client
+	 *            client de type Client
+	 * @return crée un nouveau client
+	 */
 	@PostMapping("/creation/{id}")
 	@ResponseBody
 	public Client add(@RequestBody final Client client) {
@@ -35,18 +46,24 @@ public class ClientController {
 
 		return this.service.create(client);
 	}
-	
 
-	
+	/**
+	 * 
+	 * @param id
+	 *            identifiant du client
+	 * @return un client
+	 */
 	@PostMapping("/get/{id}")
 	@ResponseBody
 	public Client get(@PathVariable final Integer id) {
-		
-			return this.service.read(id);
+
+		return this.service.read(id);
 	}
 
-	
-	
+	/**
+	 * 
+	 * @return liste des clients
+	 */
 	@RequestMapping({ "/list", "/" })
 	@ResponseBody
 	public List<Client> list() {
