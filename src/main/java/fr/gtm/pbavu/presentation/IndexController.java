@@ -42,4 +42,7 @@ public class IndexController {
 		return "index";
 	}
 
+	// TODO creation du POSTMAPPING creation d'un sondage
+	// TODO postMapping suppression d'un sondage
+
 }
