@@ -1,18 +1,32 @@
 package fr.gtm.pbavu.domain;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Classe représentant le Client de la banque (détenteur d'un compte client).
  *
  * @author Adminl
  *
  */
+@javax.persistence.Entity
 public class Client implements Entity {
 
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column
 	private String mail;
+	@Column
 	private String name;
+	@Column
 	private String numero;
+	@Column
 	private String prenom;
+	@Column
 	private String telephone;
 
 	public Client() {
