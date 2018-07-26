@@ -6,7 +6,7 @@ package fr.gtm.pbavu.domain;
  * @author Adminl
  *
  */
-public class Client implements Entity {
+public class Client implements fr.gtm.pbavu.domain.Entity {
 
 	private Integer id;
 	private String mail;
