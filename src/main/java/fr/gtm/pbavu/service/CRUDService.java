@@ -8,6 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.gtm.pbavu.domain.Entity;
 
+/**
+ *
+ * @author AZERI-VALLETTE-USSUNET
+ *
+ */
 public abstract class CRUDService<ENTITY extends Entity> {
 
 	/**

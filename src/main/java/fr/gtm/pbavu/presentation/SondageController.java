@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.gtm.pbavu.domain.Sondage;
 import fr.gtm.pbavu.service.SondageService;
 
+/**
+ * Classe représentant le web-service de la class Sondage.
+ *
+ * @author AZERI-VALLETTE-USSUNET
+ *
+ */
+
 @Controller
 @RequestMapping("/sondage")
 public class SondageController {
@@ -17,6 +24,10 @@ public class SondageController {
 	@Autowired
 	private SondageService sondageService;
 
+	/**
+	 * 
+	 * @return la date de debut et fin du sondage en cours
+	 */
 	@GetMapping("")
 	public String checkSondage() {
 		String result = null;
