@@ -1,51 +1,73 @@
 package fr.gtm.pbavu.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- * 
+ *
  * @author Adminl
  *
  */
-public class Reponse implements Entity{
 
-	private Integer id;
-	private Boolean statut;
-	private String commentaire;
+@Entity
+public class Reponse implements fr.gtm.pbavu.domain.Entity {
+
+	@Column
 	private Client client;
+	@Column
+	private String commentaire;
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column
 	private Sondage sondage;
-	
-	
+	@Column
+	private Boolean statut;
+
+	public Client getClient() {
+		return this.client;
+	}
+
+	public String getCommentaire() {
+		return this.commentaire;
+	}
+
 	@Override
 	public Integer getId() {
 		return this.id;
 	}
-	@Override
-	public void setId(Integer id) {
-		this.id = id;
+
+	public Sondage getSondage() {
+		return this.sondage;
 	}
+
 	public Boolean getStatut() {
-		return statut;
+		return this.statut;
 	}
-	public void setStatut(Boolean statut) {
-		this.statut = statut;
-	}
-	public String getCommentaire() {
-		return commentaire;
-	}
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
-	public Client getClient() {
-		return client;
-	}
-	public void setClient(Client client) {
+
+	public void setClient(final Client client) {
 		this.client = client;
 	}
-	public Sondage getSondage() {
-		return sondage;
+
+	public void setCommentaire(final String commentaire) {
+		this.commentaire = commentaire;
 	}
-	public void setSondage(Sondage sondage) {
+
+	@Override
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
+	public void setSondage(final Sondage sondage) {
 		this.sondage = sondage;
 	}
 
-	
+	public void setStatut(final Boolean statut) {
+		this.statut = statut;
+	}
+
 }
