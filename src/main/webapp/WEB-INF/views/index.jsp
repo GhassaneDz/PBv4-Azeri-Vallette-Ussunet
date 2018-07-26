@@ -46,7 +46,7 @@
                         <tr class="table-primary text-white">
                             <th scope="col">Date d'ouverture</th>
                             <th scope="col">Date de fermeture</th>
-                            <th scope="col">Nombre de demande</th>
+                            <th scope="col">Nombre de reponse</th>
                             <th scope="col">Nombre de refus</th>
                             <th scope="col">Nouveau client</th>
                             <th scope="col">Actions</th>
