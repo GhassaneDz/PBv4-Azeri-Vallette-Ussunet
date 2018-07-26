@@ -5,4 +5,4 @@
  * @author Adminl
  *
  */
-package domain;
+package fr.gtm.pbavu.domain;

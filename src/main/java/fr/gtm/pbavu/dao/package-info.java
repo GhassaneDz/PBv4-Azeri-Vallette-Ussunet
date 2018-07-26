@@ -5,4 +5,4 @@
  * @author Adminl
  *
  */
-package service;
+package fr.gtm.pbavu.dao;
