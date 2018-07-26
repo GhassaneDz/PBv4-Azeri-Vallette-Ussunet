@@ -11,9 +11,10 @@ import java.time.LocalDate;
 
 /**
  * Classe représentant les sondages lancés par la banque sur une durée déterminée
- * @author Arnaud
+ * @author AZERI-VALLETTE-USSUNET
  *
  */
+
 @Entity
 public class Sondage implements Entity {
 	
