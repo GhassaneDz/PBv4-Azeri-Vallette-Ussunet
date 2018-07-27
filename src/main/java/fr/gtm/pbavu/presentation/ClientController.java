@@ -38,7 +38,7 @@ public class ClientController {
 	 *            client de type Client
 	 * @return crée un nouveau client
 	 */
-	@PostMapping("/creation/{id}")
+	@PostMapping({"","/"})
 	@ResponseBody
 	public Client add(@RequestBody final Client client) {
 		ClientController.LOGGER.debug("Client ajouter !!", client.getName(), client.getPrenom(), client.getMail(),
@@ -53,7 +53,7 @@ public class ClientController {
 	 *            identifiant du client
 	 * @return un client
 	 */
-	@PostMapping("/get/{id}")
+	@PostMapping("/{id}")
 	@ResponseBody
 	public Client get(@PathVariable final Integer id) {
 
@@ -64,7 +64,7 @@ public class ClientController {
 	 * 
 	 * @return liste des clients
 	 */
-	@RequestMapping({ "/list", "/" })
+	@RequestMapping("/list")
 	@ResponseBody
 	public List<Client> list() {
 		return this.service.getList();
