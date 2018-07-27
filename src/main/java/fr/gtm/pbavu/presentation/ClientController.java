@@ -32,7 +32,7 @@ public class ClientController {
 	private ClientService service;
 
 	/**
-	 * 
+	 *
 	 * @param client
 	 *            client de type Client
 	 * @return crée un nouveau client
@@ -46,15 +46,13 @@ public class ClientController {
 		return this.service.create(client);
 	}
 
-<<<<<<< HEAD
-=======
 	/**
-	 * 
+	 *
 	 * @param id
 	 *            identifiant du client
 	 * @return un client
 	 */
->>>>>>> 503158ce1d0bdcf502d8415c90c4aea36197fc47
+
 	@PostMapping("/get/{id}")
 	@ResponseBody
 	public Client get(@PathVariable final Integer id) {
@@ -62,13 +60,10 @@ public class ClientController {
 		return this.service.read(id);
 	}
 
-<<<<<<< HEAD
-=======
 	/**
-	 * 
+	 *
 	 * @return liste des clients
 	 */
->>>>>>> 503158ce1d0bdcf502d8415c90c4aea36197fc47
 	@RequestMapping({ "/list", "/" })
 	@ResponseBody
 	public List<Client> list() {
