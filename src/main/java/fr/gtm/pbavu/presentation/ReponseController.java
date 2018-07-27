@@ -32,8 +32,7 @@ public class ReponseController {
 		final Reponse reponse = new Reponse();
 		reponse.setStatut(false);
 		reponse.setCommentaire(commentaire);
-		reponse.setId(id);
-		this.reponseService.create(reponse);
+		this.reponseService.createReponse(reponse, id);
 		return "Reponse négative crée avec succès";
 	}
 
