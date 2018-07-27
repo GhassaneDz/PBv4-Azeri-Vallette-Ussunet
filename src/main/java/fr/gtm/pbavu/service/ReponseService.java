@@ -9,7 +9,7 @@ import fr.gtm.pbavu.domain.Sondage;
 
 /**
  *
- * 
+ *
  * @author AZERI-VALLETTE-USSUNET
  *
  */
@@ -18,17 +18,6 @@ import fr.gtm.pbavu.domain.Sondage;
 public class ReponseService extends CRUDService<Reponse> {
 	@Autowired
 	private ReponseRepository repo;
-	
-	public Integer reponsePositif(final Integer id) {
-		final Integer result = this.repo.findRepoByPos(id).size();
-		return result;
-}
-	
-	public Integer reponseNegatif(final Integer id) {
-		final Integer result = this.repo.findRepoByNeg(id).size();
-		return result;
-}
-	
 
 	@Autowired
 	private SondageService sondageService;
@@ -38,4 +27,22 @@ public class ReponseService extends CRUDService<Reponse> {
 		reponse.setSondage(sondage);
 		return this.save(reponse);
 	}
+
+	public Integer nouvClientReponse(final Integer id) {
+		final Integer result;
+		result = this.repo.findNewClientRep(id);
+		return result;
+	}
+
+	public Integer reponseNegatif(final Integer id) {
+		final Integer result = this.repo.findRepoByNeg(id).size();
+		return result;
+	}
+
+	public Integer reponsePositif(final Integer id) {
+		final Integer result = this.repo.findRepoByPos(id).size();
+
+		return result;
+	}
+
 }

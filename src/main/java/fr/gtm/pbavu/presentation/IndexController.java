@@ -11,15 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
-
-
 
 import fr.gtm.pbavu.domain.Sondage;
 import fr.gtm.pbavu.service.ClientService;
@@ -38,13 +34,13 @@ public class IndexController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
 	@Autowired
-	private SondageService sondService;
+	private ClientService clientService;
 
 	@Autowired
 	private ReponseService repService;
 
 	@Autowired
-	private ClientService clientService;
+	private SondageService sondService;
 
 	// TODO creation du POSTMAPPING creation d'un sondage
 	@PostMapping({ "/index", "/" })
@@ -58,6 +54,31 @@ public class IndexController {
 		return "redirect:/index.html";
 	}
 
+	// TODO postMapping suppression d'un sondage
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable final Integer id) {
+		this.sondService.delete(id);
+	}
+
+	// TODO Détail d'un sondage
+	@RequestMapping({ "/detail" })
+	public String detail(@RequestParam("id") final Integer idSondage, final Model model) {
+		// avis positif
+		final Integer aviOk = this.repService.reponsePositif(idSondage);
+		// avis negatif
+		final Integer aviNot = this.repService.reponseNegatif(idSondage);
+		// nbre de nouveau client
+		final Integer nbClient = this.repService.nouvClientReponse(idSondage);
+		model.addAttribute("idSond", idSondage);
+		model.addAttribute("aviOk", aviOk);
+		model.addAttribute("aviNot", aviNot);
+		model.addAttribute("nbClient", nbClient);
+		return "detail";
+	}
+
+	// TODO postMapping fermeture d'un sondage
+
 	/**
 	 * permet l'ffaichage de la JSP index (dashboard gestion sondage) sur l'url / ou
 	 * /index
@@ -67,37 +88,13 @@ public class IndexController {
 	@RequestMapping({ "/index", "/" })
 	public String index(final Model model) {
 		final List<Sondage> sondages = this.sondService.getList();
-		//final Integer reponses = this.sondService.totalReponse(reponses);
+		// final Integer reponses = this.sondService.totalReponse(reponses);
 
 		IndexController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
 		model.addAttribute("sondages", sondages);
-		//model.addAttribute("reponses", reponses);
+		// model.addAttribute("reponses", reponses);
 
 		return "index";
 	}
-	
-	// TODO Détail d'un sondage
-	@GetMapping({"/detail"})
-	public ModelAndView detail(@RequestParam("id") final Integer id){
-		final ModelAndView mav = new ModelAndView("detail");
-		mav.addObject("reponseNegatif", this.repService.reponseNegatif(id));
-		mav.addObject("reponsePositif", this.repService.reponsePositif(id));
-		
-		return mav;
-	}
-
-	// TODO postMapping fermeture d'un sondage
-	
-	
-	
-	
-	// TODO postMapping suppression d'un sondage
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable final Integer id) {
-		this.sondService.delete(id);
-	}
-	
-	
 
 }

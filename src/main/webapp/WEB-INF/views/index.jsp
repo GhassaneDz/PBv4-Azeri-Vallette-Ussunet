@@ -66,10 +66,10 @@
                             <td>${sondage.dateFermeture }</td>
                             <td>${sondage.dateFin }</td>
                             <td>
-                            	<a href="${detail}?id=${sondage.id}" class="detail">voir les détails</a>
+                            	<a href="<c:url value='/detail.html?id='/>${sondage.id}" class="detail">voir les détails</a>
                             </td>
                             <td>
-                                <a href="${edit}?id=${sondage.id}" class="action">Fermer le sondage</a>
+                                <a href="" class="action">Fermer le sondage</a>
                             </td>
                         </tr>
                         </c:forEach>

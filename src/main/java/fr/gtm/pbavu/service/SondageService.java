@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.gtm.pbavu.dao.SondageRepository;
-import fr.gtm.pbavu.domain.Reponse;
 import fr.gtm.pbavu.domain.Sondage;
 
 /**
@@ -24,16 +23,12 @@ public class SondageService extends CRUDService<Sondage> {
 
 	@Autowired
 	private SondageRepository repo;
-	
-	
-	
+
+	@Override
 	public Sondage create(final Sondage sondage) {
 		return this.repo.save(sondage);
 	}
 
-	
-	
-	
 	public Sondage getActualSondage(final LocalDate actualDate) {
 		Sondage result = null;
 		final List<Sondage> sondages = this.repo.findAll();
@@ -45,34 +40,6 @@ public class SondageService extends CRUDService<Sondage> {
 			}
 		}
 		return result;
-	}
-
-	
-	public Integer totalReponse(List<Reponse> reponses) {
-		Integer count = 0;
-
-		for (Reponse reponse : reponses) {
-			if (reponse.getStatut()) {
-				count++;
-			}
-		}
-		return count;
-	}
-
-	
-	public void delete(final Integer id) {
-		this.repo.deleteById(id);
-		}
-
-	
-	public Integer nouveauClientCount(List<Reponse> reponses) {
-		Integer count = 0;
-		for (Reponse reponse : reponses) {
-			if (reponse.getNouveauClient()) {
-				count++;
-			}
-		}
-		return count;
 	}
 
 }

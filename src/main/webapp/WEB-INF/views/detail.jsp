@@ -33,12 +33,12 @@
 
 				<h1 class="text-primary mx-auto">Historique des Sondages</h1>
 
-				<div class="card" style="width: 18rem;">
-					<div class="table-primary text-white">Sondage N° "${sondage.id}" </div>
+				<div class="card mx-auto" style="width: 18rem;">
+					<div class="table-primary text-white">Sondage N° ${idSond} </div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">Nombre d'Avis positif : "${reponse. }" </li>
-						<li class="list-group-item">Nombre d'Avis négatif : "${ }" </li>
-						<li class="list-group-item">Nouveau Clients : "${ }" </li>
+						<li class="list-group-item">Nombre d'Avis positif : ${aviOk} </li>
+						<li class="list-group-item">Nombre d'Avis négatif : ${aviNot} </li>
+						<li class="list-group-item">Nouveau Clients : ${nbClient} </li>
 					</ul>
 				</div>
 				<table class="table">
