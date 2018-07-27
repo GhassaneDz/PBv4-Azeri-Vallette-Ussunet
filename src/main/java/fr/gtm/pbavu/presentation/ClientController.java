@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,12 +46,14 @@ public class ClientController {
 		return this.service.create(client);
 	}
 
+
 	/**
 	 * 
 	 * @param id
 	 *            identifiant du client
 	 * @return un client
 	 */
+
 	@PostMapping("/{id}")
 	@ResponseBody
 	public Client get(@PathVariable final Integer id) {
@@ -60,13 +61,17 @@ public class ClientController {
 		return this.service.read(id);
 	}
 
+
+
 	/**
 	 * 
 	 * @return liste des clients
 	 */
+
 	@RequestMapping("/list")
 	@ResponseBody
 	public List<Client> list() {
+		ClientController.LOGGER.debug("Controller client OK OK");
 		return this.service.getList();
 	}
 
