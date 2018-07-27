@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.gtm.pbavu.domain.Reponse;
 import fr.gtm.pbavu.service.ReponseService;
 
+/**
+ * Classe représentant le web-service de la Classe Reponse.
+ *
+ * @author AZERI-VALLETTE-USSUNET
+ *
+ */
+
 @Controller
 @RequestMapping("/reponse")
 public class ReponseController {

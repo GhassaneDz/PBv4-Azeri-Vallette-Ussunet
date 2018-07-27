@@ -22,7 +22,9 @@ public class Sondage implements fr.gtm.pbavu.domain.Entity {
 	private LocalDate dateDebut;
 
 	private LocalDate dateFermeture;
+
 	private LocalDate dateFin;
+
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
