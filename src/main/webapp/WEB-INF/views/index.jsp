@@ -30,14 +30,14 @@
 
                 <h1 class="text-primary mx-auto">Créer un sondage</h1>
 
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <label for="datedebut">Date de début</label>
-                        <input type="date" class="form-control" id="datedebut">
+                        <input name="dateDebut" type="date" class="form-control" id="datedebut">
                     </div>
                     <div class="form-group">
                         <label for="datedebut">Date de fin</label>
-                        <input type="date" class="form-control" id="datefin">
+                        <input name="dateFin" type="date" class="form-control" id="datefin">
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Valider</button>
                 </form>
@@ -47,30 +47,29 @@
                 <table class="table">
                     <thead>
                         <tr class="table-primary text-white">
+                   	        <th scope="col">Id</th>
                             <th scope="col">Date d'ouverture</th>
                             <th scope="col">Date de fermeture</th>
-                            <th scope="col">Nombre de reponse</th>
-                            <th scope="col">Nombre de refus</th>
-                            <th scope="col">Nouveau client</th>
+                            <th scope="col">Date de fin</th>
+                            <th scope="col">Détails</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                    
+                    <c:url value="/detail.html" var="detail" />
+					<c:url value="/action.html" var="action" />
                     	<c:forEach var="sondage" items="${sondages}">
                         <tr>
+                        	<td>${sondage.id }</td>
                             <td>${sondage.dateDebut }</td>
                             <td>${sondage.dateFermeture }</td>
+                            <td>${sondage.dateFin }</td>
                             <td>
-                                <span class="badge badge-pill badge-primary">12</span>
+                            	<a href="${detail}?id=${sondage.id}" class="detail">voir les détails</a>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-danger">3</span>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-success">3</span>
-                            </td>
-                            <td>
-                                <a href="">Fermer le sondage</a>
+                                <a href="${edit}?id=${sondage.id}" class="action">Fermer le sondage</a>
                             </td>
                         </tr>
                         </c:forEach>

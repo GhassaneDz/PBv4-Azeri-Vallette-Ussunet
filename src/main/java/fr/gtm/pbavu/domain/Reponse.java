@@ -38,8 +38,27 @@ public class Reponse implements fr.gtm.pbavu.domain.Entity {
 	
 	@Column
 	private Boolean statut;
+	
+	@Column
+	private Boolean nouveauClient;
 
 	
+	/**
+	 * 
+	 * @return un client qui a donnée son avis si il est nouveau
+	 */
+	public Boolean getNouveauClient() {
+		return nouveauClient;
+	}
+
+	/**
+	 * 
+	 * @param nouveauClient le client qui donne son avis s'il est nouveau
+	 */
+	public void setNouveauClient(Boolean nouveauClient) {
+		this.nouveauClient = nouveauClient;
+	}
+
 	/**
 	 * 
 	 * @return un client de la classe Client
