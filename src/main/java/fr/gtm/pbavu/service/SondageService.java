@@ -35,8 +35,6 @@ public class SondageService extends CRUDService<Sondage> {
 		for (final Sondage sondage : sondages) {
 			if (actualDate.isAfter(sondage.getDateDebut()) && actualDate.isBefore(sondage.getDateFin())) {
 				result = sondage;
-			} else {
-				result = null;
 			}
 		}
 		return result;
