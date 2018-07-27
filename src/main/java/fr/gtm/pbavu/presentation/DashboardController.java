@@ -7,15 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import fr.gtm.pbavu.domain.Sondage;
 import fr.gtm.pbavu.service.ClientService;
@@ -23,15 +19,17 @@ import fr.gtm.pbavu.service.ReponseService;
 import fr.gtm.pbavu.service.SondageService;
 
 /**
+ * Ce controller comprend toutes méthodes permettant d'afficher les JSP
+ * correspondant au tableau de bord de gestion des sondages par les employés de
+ * la banque.
  *
  * @author AZERI-VALLETTE-USSUNET
  *
  */
-
 @Controller
-public class IndexController {
+public class DashboardController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DashboardController.class);
 
 	@Autowired
 	private ClientService clientService;
@@ -42,7 +40,14 @@ public class IndexController {
 	@Autowired
 	private SondageService sondService;
 
-	// TODO creation du POSTMAPPING creation d'un sondage
+	/**
+	 * Creation d'un post Mapping permettant la creation d'un sondage avec une date
+	 * de début et de fin
+	 *
+	 * @param dateDebut
+	 * @param dateFin
+	 * @return
+	 */
 	@PostMapping({ "/index", "/" })
 	public String creatSondage(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateDebut,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFin) {
@@ -52,13 +57,6 @@ public class IndexController {
 		sondage.setDateFin(dateFin);
 		this.sondService.create(sondage);
 		return "redirect:/index.html";
-	}
-
-	// TODO postMapping suppression d'un sondage
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable final Integer id) {
-		this.sondService.delete(id);
 	}
 
 	// TODO Détail d'un sondage
@@ -77,7 +75,15 @@ public class IndexController {
 		return "detail";
 	}
 
-	// TODO postMapping fermeture d'un sondage
+	/**
+	 *
+	 * @param id
+	 */
+	@RequestMapping("/fermeture")
+	public String fermeture(@RequestParam("id") final Integer idSondage, final Model model) {
+		model.addAttribute(idSondage);
+		return "fermeture";
+	}
 
 	/**
 	 * permet l'ffaichage de la JSP index (dashboard gestion sondage) sur l'url / ou
@@ -90,7 +96,7 @@ public class IndexController {
 		final List<Sondage> sondages = this.sondService.getList();
 		// final Integer reponses = this.sondService.totalReponse(reponses);
 
-		IndexController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
+		DashboardController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
 		model.addAttribute("sondages", sondages);
 		// model.addAttribute("reponses", reponses);
 

@@ -26,13 +26,8 @@
 
 	<div class="container">
 		<div class="col-10 mx-auto">
-
-
-
 			<div class="row d-flex flex-column">
-
 				<h1 class="text-primary mx-auto">Historique des Sondages</h1>
-
 				<div class="card mx-auto" style="width: 18rem;">
 					<div class="table-primary text-white">Sondage N° ${idSond} </div>
 					<ul class="list-group list-group-flush">

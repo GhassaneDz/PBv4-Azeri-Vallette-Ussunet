@@ -33,11 +33,11 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="datedebut">Date de début</label>
-                        <input name="dateDebut" type="date" class="form-control" id="datedebut">
+                        <input name="dateDebut" type="date" class="form-control" id="datedebut" required>
                     </div>
                     <div class="form-group">
                         <label for="datedebut">Date de fin</label>
-                        <input name="dateFin" type="date" class="form-control" id="datefin">
+                        <input name="dateFin" type="date" class="form-control" id="datefin" required>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Valider</button>
                 </form>
@@ -69,7 +69,7 @@
                             	<a href="<c:url value='/detail.html?id='/>${sondage.id}" class="detail">voir les détails</a>
                             </td>
                             <td>
-                                <a href="" class="action">Fermer le sondage</a>
+                                <a href="<c:url value='/fermeture.html?id='/>${sondage.id}" class="action">Fermer le sondage</a>
                             </td>
                         </tr>
                         </c:forEach>
