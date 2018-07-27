@@ -32,7 +32,9 @@ public class IndexController {
 	 *
 	 * @return la page Index.html
 	 */
-	@RequestMapping({ "/index", "/" })
+
+	
+	@RequestMapping({ "/index", "/"})
 	public String index(final Model model) {
 		final List<Sondage> sondages = this.sondService.getList();
 
@@ -40,6 +42,7 @@ public class IndexController {
 		model.addAttribute("sondages", sondages);
 
 		return "index";
+
 	}
 
 	// TODO creation du POSTMAPPING creation d'un sondage
