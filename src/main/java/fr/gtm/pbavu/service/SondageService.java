@@ -17,7 +17,6 @@ import fr.gtm.pbavu.domain.Sondage;
  * @author AZERI-VALLETTE-USSUNET
  *
  */
-
 @Service
 public class SondageService extends CRUDService<Sondage> {
 
