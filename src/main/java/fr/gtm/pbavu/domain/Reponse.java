@@ -27,6 +27,7 @@ public class Reponse implements fr.gtm.pbavu.domain.Entity {
 	
 	@Column(nullable=true)
 	private String commentaire;
+	
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +36,7 @@ public class Reponse implements fr.gtm.pbavu.domain.Entity {
 	@ManyToOne
 	@JoinColumn(name="id_sondage", referencedColumnName="id")
 	private Sondage sondage;
+
 	
 	@Column
 	private Boolean statut;

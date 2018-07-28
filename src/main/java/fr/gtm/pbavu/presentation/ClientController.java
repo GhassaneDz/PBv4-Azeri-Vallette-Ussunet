@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -64,9 +65,10 @@ public class ClientController {
 	
 	
 	//TODO trouver un client dans la base
-	@PostMapping("/{numero}")
+	@GetMapping("/find/{numero}")
 	@ResponseBody
-	public Boolean findClient(@RequestBody String numero ) {
+	public Boolean findClient(@PathVariable String numero ) {
+		
 		final boolean result = this.service.verfierNumero(numero);
 		return result;
 	}

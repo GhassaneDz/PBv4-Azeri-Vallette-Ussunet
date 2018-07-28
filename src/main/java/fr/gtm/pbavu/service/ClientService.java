@@ -1,12 +1,15 @@
 package fr.gtm.pbavu.service;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.gtm.pbavu.dao.ClientRepository;
 import fr.gtm.pbavu.domain.Client;
 import fr.gtm.pbavu.domain.Reponse;
+import fr.gtm.pbavu.presentation.ClientController;
 
 /**
  * Classe représentant le Client service.
@@ -17,6 +20,7 @@ import fr.gtm.pbavu.domain.Reponse;
 
 @Service
 public class ClientService extends CRUDService<Client> {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClientService.class);
 
 	@Autowired
 	private ClientRepository repo;
@@ -35,12 +39,14 @@ public class ClientService extends CRUDService<Client> {
 		boolean result =false;
 		Client existClient = this.repo.findByNumero(numero);
 		
+		 LOGGER.debug("Je recherche "+numero+existClient);
+		 
 		if (existClient != null) {
 			//créer une réponse
 			Reponse reponse = new Reponse();
 			//lui attribuer un client
 			reponse.setClient(existClient);
-			
+			LOGGER.debug("JESUISPASSSSSSSSSSSS");
 			this.repservice.create(reponse);
 			result = true; 
 		}
