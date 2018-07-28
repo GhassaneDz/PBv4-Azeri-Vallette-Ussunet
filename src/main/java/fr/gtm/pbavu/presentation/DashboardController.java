@@ -20,7 +20,7 @@ import fr.gtm.pbavu.service.SondageService;
 
 /**
  * Ce controller comprend toutes méthodes permettant d'afficher les JSP
- * correspondant au tableau de bord de gestion des sondages par les employés de
+ * correspondants au tableau de bord de gestion des sondages par les employés de
  * la banque.
  *
  * @author AZERI-VALLETTE-USSUNET
@@ -59,7 +59,13 @@ public class DashboardController {
 		return "redirect:/index.html";
 	}
 
-	// TODO Détail d'un sondage
+	/**
+	 * Permet d'afficher la JSP qui affiche les détails d'un sondage
+	 *
+	 * @param idSondage
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping({ "/detail" })
 	public String detail(@RequestParam("id") final Integer idSondage, final Model model) {
 		// avis positif
@@ -86,17 +92,25 @@ public class DashboardController {
 		return "fermeture";
 	}
 
+	/**
+	 * Permet de récupérer la requête post de l'ajout d'une date de fermeture par
+	 * l'utilisateur
+	 *
+	 * @param dateFermeture
+	 * @param idSondage
+	 * @return
+	 */
 	@PostMapping("/fermeture")
 	public String fermeturePost(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture,
-			@RequestParam("id") final Integer idSondage) {
-		final Sondage sondage = this.sondService.read(idSondage);
-		sondage.setDateFermeture(dateFermeture);
-		this.sondService.edit(sondage);
+			@RequestParam("id") final Integer idSondage, final Model model) {
+
+		final boolean isOpen = this.sondService.fermetureSondage(idSondage, dateFermeture);
+		model.addAttribute("dateDalse", isOpen);
 		return "redirect:/index.html";
 	}
 
 	/**
-	 * permet l'ffaichage de la JSP index (dashboard gestion sondage) sur l'url / ou
+	 * permet l'affichage de la JSP index (dashboard gestion sondage) sur l'url / ou
 	 * /index
 	 *
 	 * @return la page Index.html
@@ -104,7 +118,6 @@ public class DashboardController {
 	@RequestMapping({ "/index", "/" })
 	public String index(final Model model) {
 		final List<Sondage> sondages = this.sondService.getList();
-		// final Integer reponses = this.sondService.totalReponse(reponses);
 
 		DashboardController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
 		model.addAttribute("sondages", sondages);

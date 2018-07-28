@@ -2,6 +2,7 @@ package fr.gtm.pbavu.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +30,37 @@ public class SondageService extends CRUDService<Sondage> {
 		return this.repo.save(sondage);
 	}
 
+	public boolean fermetureSondage(final Integer id, final LocalDate dateFermeture) {
+		boolean result = false;
+		final Optional<Sondage> tempSondage;
+		tempSondage = this.repo.findById(id);
+
+		if (tempSondage.isPresent()) {
+			final Sondage actualSondage = tempSondage.get();
+
+			SondageService.LOGGER.debug("j'ai récupéré le sondage actuel");
+			SondageService.LOGGER.debug("DAte de début" + actualSondage.getDateDebut());
+			// verifier si le sondage est en cours
+			// si le sondage est en cours ajouter dateFermeture et return true
+			if (actualSondage != null && dateFermeture.isAfter(actualSondage.getDateDebut())
+					&& dateFermeture.isBefore(actualSondage.getDateFin())) {
+				actualSondage.setDateFermeture(dateFermeture);
+				this.edit(actualSondage);
+				result = true;
+			}
+		}
+
+		// si le sondage est déjà fermé return false
+		return result;
+	}
+
 	public Sondage getActualSondage(final LocalDate actualDate) {
 		Sondage result = null;
 		final List<Sondage> sondages = this.repo.findAll();
 		for (final Sondage sondage : sondages) {
-			if (actualDate.isAfter(sondage.getDateDebut()) && actualDate.isBefore(sondage.getDateFin())) {
+			if (actualDate.isAfter(sondage.getDateDebut()) == true
+					&& actualDate.isBefore(sondage.getDateFin()) == true) {
+				SondageService.LOGGER.debug("j'ai parcouru un sondage");
 				result = sondage;
 			}
 		}

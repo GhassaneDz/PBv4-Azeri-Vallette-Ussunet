@@ -42,7 +42,7 @@ public class ClientController {
 	@PostMapping({ "", "/" })
 	@ResponseBody
 	public Client add(@RequestBody final Client client) {
-		ClientController.LOGGER.debug("Client ajouter !!", client.getName(), client.getPrenom(), client.getMail(),
+		ClientController.LOGGER.debug("Client ajouter !!", client.getNom(), client.getPrenom(), client.getMail(),
 				client.getNumero());
 
 		return this.service.create(client);
