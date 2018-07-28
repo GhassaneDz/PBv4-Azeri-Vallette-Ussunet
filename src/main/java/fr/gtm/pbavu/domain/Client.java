@@ -25,7 +25,7 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 	private String mail;
 
 	@Column
-	private String name;
+	private String nom;
 
 	@Column(nullable = true)
 	private String numero;
@@ -58,8 +58,8 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 	 *
 	 * @return le nom du client
 	 */
-	public String getName() {
-		return this.name;
+	public String getNom() {
+		return this.nom;
 	}
 
 	/**
@@ -102,11 +102,11 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 
 	/**
 	 *
-	 * @param name
+	 * @param nom
 	 *            nom de client
 	 */
-	public void setName(final String name) {
-		this.name = name;
+	public void setNom(final String nom) {
+		this.nom = nom;
 	}
 
 	/**
