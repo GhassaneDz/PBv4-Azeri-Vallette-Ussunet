@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.gtm.pbavu.domain.Client;
@@ -60,17 +61,16 @@ public class ClientController {
 
 		return this.service.read(id);
 	}
-
-	/**
-	 *
-	 * @return liste des clients
-	 */
-	@RequestMapping("/list")
-
+	
+	
+	//TODO trouver un client dans la base
+	@PostMapping("/{numero}")
 	@ResponseBody
-	public List<Client> list() {
-		ClientController.LOGGER.debug("Controller client OK OK");
-		return this.service.getList();
+	public Boolean findClient(@RequestBody String numero ) {
+		final boolean result = this.service.verfierNumero(numero);
+		return result;
 	}
+	
+
 
 }
