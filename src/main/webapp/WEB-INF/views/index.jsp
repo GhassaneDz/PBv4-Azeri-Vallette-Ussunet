@@ -73,7 +73,7 @@
 									href="<c:url value='/detail.html?id='/>${sondage.id}"
 									class="detail">voir les détails</a></td>
 								<td><a
-									href="<c:url value='/fermeture.html?id='/>${sondage.id}"
+									href="<c:url value='/fermeture.html?isOpen=true&id='/>${sondage.id}"
 									class="action">Fermer le sondage</a></td>
 
 							</tr>
