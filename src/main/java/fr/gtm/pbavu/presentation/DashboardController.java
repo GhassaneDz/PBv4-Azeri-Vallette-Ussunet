@@ -87,8 +87,11 @@ public class DashboardController {
 	 * @param id
 	 */
 	@RequestMapping("/fermeture")
-	public String fermeture(@RequestParam("id") final Integer idSondage, final Model model) {
+	public String fermeture(@RequestParam("id") final Integer idSondage, @RequestParam("isOpen") final Boolean isOpen,
+			final Model model) {
+
 		model.addAttribute("id", idSondage);
+		model.addAttribute("isOpen", isOpen);
 		return "fermeture";
 	}
 
@@ -103,10 +106,19 @@ public class DashboardController {
 	@PostMapping("/fermeture")
 	public String fermeturePost(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture,
 			@RequestParam("id") final Integer idSondage, final Model model) {
+		final StringBuilder view = new StringBuilder();
 
 		final boolean isOpen = this.sondService.fermetureSondage(idSondage, dateFermeture);
-		model.addAttribute("dateDalse", isOpen);
-		return "redirect:/index.html";
+		if (isOpen == true) {
+			view.append("redirect:/index.html");
+		} else {
+			view.append("redirect:fermeture.html?id=");
+			view.append(idSondage.toString());
+			model.addAttribute("isOpen", isOpen);
+		}
+
+		final String result = view.toString();
+		return result;
 	}
 
 	/**
@@ -117,6 +129,7 @@ public class DashboardController {
 	 */
 	@RequestMapping({ "/index", "/" })
 	public String index(final Model model) {
+
 		final List<Sondage> sondages = this.sondService.getList();
 
 		DashboardController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
