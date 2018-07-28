@@ -19,10 +19,18 @@ import javax.persistence.Id;
 @Entity
 public class Sondage implements fr.gtm.pbavu.domain.Entity {
 
+	/**
+	 * Date de début du sondage
+	 */
 	private LocalDate dateDebut;
 
+	/**
+	 * Date saisie par l'utilisateur pour fermer le sondage avant sa date de fin
+	 */
 	private LocalDate dateFermeture;
-
+	/**
+	 * Date programmée de fermeture
+	 */
 	private LocalDate dateFin;
 
 	@Id

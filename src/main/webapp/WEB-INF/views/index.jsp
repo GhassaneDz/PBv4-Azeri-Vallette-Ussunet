@@ -49,8 +49,8 @@
                         <tr class="table-primary text-white">
                    	        <th scope="col">Id</th>
                             <th scope="col">Date d'ouverture</th>
+                            <th scope="col">Date de fin prévue</th>
                             <th scope="col">Date de fermeture</th>
-                            <th scope="col">Date de fin</th>
                             <th scope="col">Détails</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -63,8 +63,8 @@
                         <tr>
                         	<td>${sondage.id }</td>
                             <td>${sondage.dateDebut }</td>
-                            <td>${sondage.dateFermeture }</td>
                             <td>${sondage.dateFin }</td>
+                            <td>${sondage.dateFermeture }</td>
                             <td>
                             	<a href="<c:url value='/detail.html?id='/>${sondage.id}" class="detail">voir les détails</a>
                             </td>

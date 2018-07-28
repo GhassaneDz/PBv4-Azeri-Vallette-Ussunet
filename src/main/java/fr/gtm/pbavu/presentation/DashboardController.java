@@ -76,13 +76,23 @@ public class DashboardController {
 	}
 
 	/**
+	 * Permet l'affichage de la page de fermeture d'un sondage
 	 *
 	 * @param id
 	 */
 	@RequestMapping("/fermeture")
 	public String fermeture(@RequestParam("id") final Integer idSondage, final Model model) {
-		model.addAttribute(idSondage);
+		model.addAttribute("id", idSondage);
 		return "fermeture";
+	}
+
+	@PostMapping("/fermeture")
+	public String fermeturePost(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture,
+			@RequestParam("id") final Integer idSondage) {
+		final Sondage sondage = this.sondService.read(idSondage);
+		sondage.setDateFermeture(dateFermeture);
+		this.sondService.edit(sondage);
+		return "redirect:/index.html";
 	}
 
 	/**
