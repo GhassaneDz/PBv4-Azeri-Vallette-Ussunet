@@ -35,9 +35,10 @@ public class ReponseController {
 	 *            Identifiant du sondage en cours.
 	 * @return Reponse Créé une nouvelle réponse.
 	 */
-	@PostMapping("/{id}/0")
+	@PostMapping("/negative/{id}")
 	public String createNegativeReponse(@RequestParam("commentaire") final String commentaire,
 			@PathVariable final Integer id) {
+		
 		final Reponse reponse = new Reponse();
 		reponse.setStatut(false);
 		reponse.setCommentaire(commentaire);
