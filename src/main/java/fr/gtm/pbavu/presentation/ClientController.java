@@ -1,7 +1,5 @@
 package fr.gtm.pbavu.presentation;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.gtm.pbavu.domain.Client;
@@ -52,6 +49,19 @@ public class ClientController {
 
 	/**
 	 *
+	 * @param numero
+	 * @return
+	 */
+	@GetMapping("/find/{numero}")
+	@ResponseBody
+	public Boolean findClient(@PathVariable final String numero) {
+
+		final boolean result = this.service.verfierNumero(numero);
+		return result;
+	}
+
+	/**
+	 *
 	 * @param id
 	 *            identifiant du client
 	 * @return un client
@@ -62,17 +72,5 @@ public class ClientController {
 
 		return this.service.read(id);
 	}
-	
-	
-	//TODO trouver un client dans la base
-	@GetMapping("/find/{numero}")
-	@ResponseBody
-	public Boolean findClient(@PathVariable String numero ) {
-		
-		final boolean result = this.service.verfierNumero(numero);
-		return result;
-	}
-	
-
 
 }
