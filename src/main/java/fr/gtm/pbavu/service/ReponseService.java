@@ -22,9 +22,10 @@ public class ReponseService extends CRUDService<Reponse> {
 	@Autowired
 	private SondageService sondageService;
 
-	public Reponse createReponse(final Reponse reponse, final Integer id) {
+	public Reponse createReponseNegative(final Reponse reponse, final Integer id) {
 		final Sondage sondage = this.sondageService.read(id);
 		reponse.setSondage(sondage);
+		reponse.setStatut(false);
 		return this.save(reponse);
 	}
 
