@@ -21,28 +21,49 @@ import fr.gtm.pbavu.domain.Client;
 @Entity
 public class Reponse implements fr.gtm.pbavu.domain.Entity {
 
+	/**
+	 * Objet de type Client represnte le Client qui répond au sondage
+	 */
 	@OneToOne
 	@JoinColumn(name="id_client", referencedColumnName="id", nullable=true)
 	private Client client;
 	
+	/**
+	 * commentaire désigne un commantaire laisser par le client
+	 */
 	@Column(nullable=true)
 	private String commentaire;
 	
+	/**
+	 * l'id représente l'identifaint unique utiliser dans la base de donnée; 
+	 * il est génerer par la base de donnée lors de l'ajout d'une nouvelle réponse
+	 */
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	/**
+	 * Objet sondage de type Sondage représente le sondge qui coorespond a la réponse du client
+	 */
 	@ManyToOne
 	@JoinColumn(name="id_sondage", referencedColumnName="id")
 	private Sondage sondage;
 
-	
+	/**
+	 * sataut de la réponse si la réposne est positif (True) ou négatif (False)
+	 */
 	@Column
 	private Boolean statut;
 	
+	/**
+	 * Le client qui à donnée son avis est-ce qu'il est nouveau ou pas
+	 */
 	@Column
 	private Boolean nouveauClient;
+
+	
+	
 
 	
 	/**

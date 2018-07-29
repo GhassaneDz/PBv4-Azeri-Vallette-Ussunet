@@ -54,9 +54,9 @@ public class ClientController {
 	 */
 	@GetMapping("/find/{numero}")
 	@ResponseBody
-	public Boolean findClient(@PathVariable final String numero) {
+	public Client findClient(@PathVariable final String numero) {
 
-		final boolean result = this.service.verfierNumero(numero);
+		final Client result = this.service.verfierNumero(numero);
 		return result;
 	}
 

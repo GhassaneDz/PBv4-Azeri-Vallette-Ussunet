@@ -1,5 +1,7 @@
 package fr.gtm.pbavu.service;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,32 +24,38 @@ public class ClientService extends CRUDService<Client> {
 
 	@Autowired
 	private ClientRepository repo;
-
 	@Autowired
 	private ReponseService repservice;
+
+	@Autowired
+	private SondageService sonService;
 
 	/**
 	 * Vérifier numero de compte et creer une reponse avec le client récupéré du DAO
 	 * si ok sinon retourne false
-	 * 
+	 *
 	 * @param numero
 	 * @return
 	 */
-	public boolean verfierNumero(final String numero) {
+	public Client verfierNumero(final String numero) {
 
-		boolean result = false;
+		Client result = new Client();
 		final Client existClient = this.repo.findByNumero(numero);
 
 		ClientService.LOGGER.debug("Je recherche " + numero + " " + existClient);
 
 		if (existClient != null) {
+
 			// créer une réponse
 			final Reponse reponse = new Reponse();
+			reponse.setStatut(true);
 			// lui attribuer un client
 			reponse.setClient(existClient);
+			final LocalDate actualDate = LocalDate.now();
+			reponse.setSondage(this.sonService.getActualSondage(actualDate));
 			ClientService.LOGGER.debug("JESUISPASSSSSSSSSSSS");
 			this.repservice.create(reponse);
-			result = true;
+			result = existClient;
 		}
 
 		return result;

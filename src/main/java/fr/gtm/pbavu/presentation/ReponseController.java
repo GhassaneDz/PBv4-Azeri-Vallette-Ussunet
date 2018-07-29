@@ -1,12 +1,15 @@
 package fr.gtm.pbavu.presentation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.pbavu.domain.Reponse;
 import fr.gtm.pbavu.service.ReponseService;
@@ -18,10 +21,12 @@ import fr.gtm.pbavu.service.ReponseService;
  *
  */
 
-@Controller
+@RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/reponse")
 public class ReponseController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
 
 	@Autowired
 	private ReponseService reponseService;
@@ -36,14 +41,12 @@ public class ReponseController {
 	 * @return Reponse Créé une nouvelle réponse.
 	 */
 	@PostMapping("/negative/{id}")
-	public String createNegativeReponse(@RequestParam("commentaire") final String commentaire,
-			@PathVariable final Integer id) {
-		
-		final Reponse reponse = new Reponse();
-		reponse.setStatut(false);
-		reponse.setCommentaire(commentaire);
-		this.reponseService.createReponse(reponse, id);
-		return "Reponse négative crée avec succès";
+	@ResponseBody
+	public String createNegativeReponse(@RequestBody final Reponse reponse, @PathVariable final Integer id) {
+		ReponseController.LOGGER.debug("Webservice Reponse Bonjour");
+
+		this.reponseService.createReponseNegative(reponse, id);
+		return "Reponse négative créée avec succès";
 	}
 
 }

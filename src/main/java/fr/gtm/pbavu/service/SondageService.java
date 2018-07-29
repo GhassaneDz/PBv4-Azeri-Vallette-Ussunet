@@ -13,7 +13,8 @@ import fr.gtm.pbavu.dao.SondageRepository;
 import fr.gtm.pbavu.domain.Sondage;
 
 /**
- *
+ * Le SondageService est le service apparenté l'entité Sondage
+ * 
  * @author AZERI-VALLETTE-USSUNET
  *
  */
@@ -30,6 +31,15 @@ public class SondageService extends CRUDService<Sondage> {
 		return this.repo.save(sondage);
 	}
 
+	/**
+	 * 
+	 * cette methode permet de férmer un sondage ouvert
+	 * @param id
+	 *            l'id d'un sondage
+	 * @param dateFermeture  date de fermiture d'un sondage
+	 * @return false si il n'y a pas de sondage ouvert, true si il existe un sondage
+	 *         ouvert
+	 */
 	public boolean fermetureSondage(final Integer id, final LocalDate dateFermeture) {
 		boolean result = false;
 		final Optional<Sondage> tempSondage;
@@ -54,6 +64,11 @@ public class SondageService extends CRUDService<Sondage> {
 		return result;
 	}
 
+	/**
+	 * cette methode vérifie s'il existe sondage ouvert a la date actuel
+	 * @param actualDate la date actuel 
+	 * @return le Sondage actuel
+	 */
 	public Sondage getActualSondage(final LocalDate actualDate) {
 		Sondage result = null;
 		final List<Sondage> sondages = this.repo.findAll();

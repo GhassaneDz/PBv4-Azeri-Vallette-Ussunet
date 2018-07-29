@@ -109,7 +109,7 @@ public class DashboardController {
 		final StringBuilder view = new StringBuilder();
 
 		final boolean isOpen = this.sondService.fermetureSondage(idSondage, dateFermeture);
-		if (isOpen == true) {
+		if (isOpen) {
 			view.append("redirect:/index.html");
 		} else {
 			view.append("redirect:fermeture.html?id=");
@@ -134,8 +134,7 @@ public class DashboardController {
 
 		DashboardController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
 		model.addAttribute("sondages", sondages);
-		// model.addAttribute("reponses", reponses);
-
+		
 		return "index";
 	}
 

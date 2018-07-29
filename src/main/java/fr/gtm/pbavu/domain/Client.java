@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Classe représentant le Client de la banque (détenteur d'un compte client).
+ * Classe représentant le Client de la banque (détenteur d'un Compte client).
  *
  * @author AZERI-VALLETTE-USSUNET
  *
@@ -16,30 +16,58 @@ import javax.persistence.Id;
 @Entity
 public class Client implements fr.gtm.pbavu.domain.Entity {
 
+	/**
+	 * l'id représente l'identifaint unique utiliser dans la base de donnée; 
+	 * il est generer par la base de donnée lors de la création d'un  nouveau Client
+	 */
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	/**
+	 * L'email designe email du Client
+	 */
 	@Column(nullable = true)
 	private String mail;
 
+	/**
+	 * nom du client
+	 */
 	@Column
 	private String nom;
 
+	/**
+	 * Prénom du client
+	 */
 	@Column(nullable = true)
 	private String numero;
+	
+	/**
+	 * numero designe le numéro d'identifacation unique d'un client
+	 */
 	@Column
 	private String prenom;
 
+	/**
+	 * telephone designe le numéro de téleéphonz du client
+	 */
 	@Column(nullable = true)
 	private String telephone;
 
+	
+	
+	
 	/**
 	 * Constructeur par défaut
 	 */
 	public Client() {
+		//Constructeur par defaut
 	}
+	
+	
+	
+	
 
 	@Override
 	public Integer getId() {
