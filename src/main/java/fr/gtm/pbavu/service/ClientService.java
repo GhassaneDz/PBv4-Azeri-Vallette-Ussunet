@@ -39,8 +39,8 @@ public class ClientService extends CRUDService<Client> {
 	 */
 	public Client verfierNumero(final String numero) {
 
-		Client result = new Client();
-		final Client existClient = this.repo.findByNumero(numero);
+		Client existClient = null;
+		existClient = this.repo.findByNumero(numero);
 
 		ClientService.LOGGER.debug("Je recherche " + numero + " " + existClient);
 
@@ -55,10 +55,9 @@ public class ClientService extends CRUDService<Client> {
 			reponse.setSondage(this.sonService.getActualSondage(actualDate));
 			ClientService.LOGGER.debug("JESUISPASSSSSSSSSSSS");
 			this.repservice.create(reponse);
-			result = existClient;
 		}
 
-		return result;
+		return existClient;
 	}
 
 }

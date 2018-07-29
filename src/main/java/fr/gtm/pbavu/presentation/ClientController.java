@@ -52,10 +52,10 @@ public class ClientController {
 	 * @param numero
 	 * @return
 	 */
-	@GetMapping("/find/{numero}")
+	@PostMapping("/find/{numero}")
 	@ResponseBody
 	public Client findClient(@PathVariable final String numero) {
-
+		ClientController.LOGGER.debug("on a le numero ! : " + numero);
 		final Client result = this.service.verfierNumero(numero);
 		return result;
 	}
