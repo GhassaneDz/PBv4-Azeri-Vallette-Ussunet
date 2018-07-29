@@ -44,7 +44,7 @@ public class ClientController {
 		ClientController.LOGGER.debug("Client ajouter !!", client.getNom(), client.getPrenom(), client.getMail(),
 				client.getNumero());
 
-		return this.service.create(client);
+		return this.service.createClientRep(client);
 	}
 
 	/**
