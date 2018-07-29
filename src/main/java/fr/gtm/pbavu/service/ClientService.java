@@ -44,6 +44,7 @@ public class ClientService extends CRUDService<Client> {
 		if (existClient != null) {
 			//créer une réponse
 			Reponse reponse = new Reponse();
+			reponse.setStatut(true);
 			//lui attribuer un client
 			reponse.setClient(existClient);
 			LOGGER.debug("JESUISPASSSSSSSSSSSS");
