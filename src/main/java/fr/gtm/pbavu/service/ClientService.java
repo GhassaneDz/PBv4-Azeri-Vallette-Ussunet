@@ -1,6 +1,8 @@
 package fr.gtm.pbavu.service;
 
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ import fr.gtm.pbavu.presentation.ClientController;
 public class ClientService extends CRUDService<Client> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClientService.class);
 
+	@Autowired
+	private SondageService sonService;
 	@Autowired
 	private ClientRepository repo;
 	
@@ -47,6 +51,8 @@ public class ClientService extends CRUDService<Client> {
 			reponse.setStatut(true);
 			//lui attribuer un client
 			reponse.setClient(existClient);
+			LocalDate actualDate = LocalDate.now();
+			reponse.setSondage(this.sonService.getActualSondage(actualDate));
 			LOGGER.debug("JESUISPASSSSSSSSSSSS");
 			this.repservice.create(reponse);
 			result = true; 
