@@ -19,7 +19,7 @@ Concernant le back :
 Pour le back-end :
 
 * Récupérer **pbv4.sql** à la racine du dossier du projet
-* créer une BDD **pbv4jpa** MySQL en encodage UTF8 moteur InnoDB
+* créer une BDD **pbv4** MySQL en encodage UTF8 moteur InnoDB
 * user :"root", mot de passe :""
 * déployer une première fois l'application sur TomCat, le schéma de BDD sera créé automatiquement.
 * importer le fichier proxibanquejpa.sql dans la BDD
@@ -33,12 +33,10 @@ Si vous voulez utilisez les WebServices vous pouvez déployé le projet Angular 
 
 TODO modif cas d'utilisation de l'interface de Gestion des sondages :
 
-### 1- Ouvrir un sondage :
-Lamine ou Lamine LOLO - Zidane ou Zidane ZOZO - Fabien ou Fabien FOFO - Steven ou Steven SOSO
-Date de naissance pour Lamine 01/04/1985
+### 1- Ouvrir un sondage
 
 ### 2- Consulter les détails d'un sondage :
-Possibilité de voir le nombre de répondant (reponse négative et positive), le nombre de nouveau client, 
+Possibilité de voir le nombre de répondant (reponse négative et positive), le nombre de nouveau client.
 
 ### 3 - Fermeture d'un sondage :
 Possibilité de fermer un sondage si il est en cours.
