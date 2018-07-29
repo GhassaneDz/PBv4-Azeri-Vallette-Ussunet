@@ -8,7 +8,6 @@
 	<packaging>war</packaging>
 
 
-
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -16,7 +15,10 @@
 		<spring.version>5.0.7.RELEASE</spring.version>
 	</properties>
 
+
+
 	<dependencies>
+	
 		<!-- dependances sevlet jsp jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -43,7 +45,6 @@
 		</dependency>
 
 		<!-- dependances spring core data aop web -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -84,28 +85,21 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>2.0.8.RELEASE</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>5.0.7.RELEASE</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>5.0.7.RELEASE</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
 			<version>2.0.8.RELEASE</version>
 		</dependency>
-
 
 		<!-- dependances hibernate -->
 		<dependency>
@@ -113,7 +107,6 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.3.1.Final</version>
 		</dependency>
-
 
 		<!-- dependances driver mysql -->
 		<dependency>
@@ -142,24 +135,21 @@
 
 
 		<!-- dependances logback -->
-
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-
-
+		
 		<!-- dependances junit -->
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
-
 
 
 

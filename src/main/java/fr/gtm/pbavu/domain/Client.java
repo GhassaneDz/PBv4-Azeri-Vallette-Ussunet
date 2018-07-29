@@ -62,6 +62,7 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 	 * Constructeur par défaut
 	 */
 	public Client() {
+		//Constructeur par defaut
 	}
 	
 	
