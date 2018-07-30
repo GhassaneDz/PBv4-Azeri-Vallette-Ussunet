@@ -22,13 +22,12 @@
 
 </head>
 <body>
-	<div class="alert alert-danger col-10 mx-auto" role="alert">
+	<div class="alert alert-danger col-10 mx-auto my-4" role="alert">
 		<strong>Oops!</strong> La date de fermeture prévisionelle est
 		antérieur à la date saisie
 	</div>
-	<div class="raw">
-		<a href="<c:url value="/index.html" />"><button
-				class="btn btn-primary mx-auto">Liste des Sondages</button></a>
+	<div class="row">
+		<a class="btn btn-primary mx-auto" href="<c:url value="/index.html"/>"> Retour à la liste des Sondages</a>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
