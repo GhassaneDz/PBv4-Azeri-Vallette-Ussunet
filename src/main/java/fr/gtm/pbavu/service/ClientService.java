@@ -29,7 +29,21 @@ public class ClientService extends CRUDService<Client> {
 
 	@Autowired
 	private SondageService sonService;
-
+	
+	public Client createClientRep(final Client client) {
+		final Client result = null;
+		//sauvegardé le client
+		this.repo.save(client);
+		//creer une reponse positive avec ce client 
+		Reponse reponsePositive = new Reponse();
+		reponsePositive.setClient(client);
+		reponsePositive.setStatut(true);
+		//persister la reponse
+		this.repservice.create(reponsePositive);	
+		
+		return result;
+	}
+	
 	/**
 	 * Vérifier numero de compte et creer une reponse avec le client récupéré du DAO
 	 * si ok sinon retourne false
@@ -39,8 +53,8 @@ public class ClientService extends CRUDService<Client> {
 	 */
 	public Client verfierNumero(final String numero) {
 
-		Client result = new Client();
-		final Client existClient = this.repo.findByNumero(numero);
+		Client existClient = null;
+		existClient = this.repo.findByNumero(numero);
 
 		ClientService.LOGGER.debug("Je recherche " + numero + " " + existClient);
 
@@ -55,10 +69,9 @@ public class ClientService extends CRUDService<Client> {
 			reponse.setSondage(this.sonService.getActualSondage(actualDate));
 			ClientService.LOGGER.debug("JESUISPASSSSSSSSSSSS");
 			this.repservice.create(reponse);
-			result = existClient;
 		}
 
-		return result;
+		return existClient;
 	}
 
 }

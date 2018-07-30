@@ -46,7 +46,20 @@ public class ClientController {
 		ClientController.LOGGER.debug("Client ajouter !!", client.getNom(), client.getPrenom(), client.getMail(),
 				client.getNumero());
 
-		return this.service.create(client);
+		return this.service.createClientRep(client);
+	}
+
+	/**
+	 *
+	 * @param numero  numéro d'identification d'un client
+	 * @return l'objet client
+	 */
+	@GetMapping("/find/{numero}")
+	@ResponseBody
+	public Client findClient(@PathVariable final String numero) {
+		ClientController.LOGGER.debug("on a le numero ! : " + numero);
+		final Client result = this.service.verfierNumero(numero);
+		return result;
 	}
 
 	/**
@@ -62,19 +75,6 @@ public class ClientController {
 		return this.service.read(id);
 	}
 	
-	/**
-	 * 
-	 * @param numero numero d'identifaction d'un client
-	 * @return vrai ou faux si le client existe dans la base de donnée
-	 */
-	//trouver un client dans la base
-	@GetMapping("/find/{numero}")
-	@ResponseBody
-	public Boolean findClient(@PathVariable String numero ) {
-		
-		final boolean result = this.service.verfierNumero(numero);
-		return result;
-	}
 	
 
 

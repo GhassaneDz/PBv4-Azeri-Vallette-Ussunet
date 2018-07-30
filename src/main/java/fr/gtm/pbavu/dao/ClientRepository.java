@@ -1,6 +1,7 @@
 package fr.gtm.pbavu.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import fr.gtm.pbavu.domain.Client;
@@ -15,6 +16,9 @@ import fr.gtm.pbavu.domain.Client;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 	
-	public Client findByNumero(String numero);
+//	public Client findByNumero(String numero);
+	
+	@Query (value = "SELECT * FROM `client` WHERE `numero`=?1", nativeQuery = true)
+	Client findByNumero(String numero);
 
 }
