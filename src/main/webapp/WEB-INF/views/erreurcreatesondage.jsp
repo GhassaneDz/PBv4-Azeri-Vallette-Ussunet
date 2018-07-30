@@ -22,12 +22,11 @@
 
 </head>
 <body>
-	<div class="alert alert-danger col-10 mx-auto" role="alert">
+	<div class="alert alert-danger col-4 text-center mx-auto my-4" role="alert">
 		<strong>Oops!</strong> Plusieurs Sondages se chevauchent, merci de ressaisir les dates du sondage à créer.
 	</div>
-	<div class="raw">
-		<a href="<c:url value="/index.html" />"><button
-				class="btn btn-primary mx-auto">Liste des Sondages</button></a>
+	<div class="row">
+		<a class="btn btn-primary mx-auto" href="<c:url value="/index.html"/>"> Retour à la liste des Sondages</a>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
