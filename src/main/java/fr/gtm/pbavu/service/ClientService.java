@@ -29,21 +29,23 @@ public class ClientService extends CRUDService<Client> {
 
 	@Autowired
 	private SondageService sonService;
-	
+
 	public Client createClientRep(final Client client) {
-		final Client result = null;
-		//sauvegardé le client
+		Client result = null;
+		// sauvegardé le client
 		this.repo.save(client);
-		//creer une reponse positive avec ce client 
-		Reponse reponsePositive = new Reponse();
+		result = this.repo.findByNomAndPrenom(client.getNom(), client.getPrenom());
+		// creer une reponse positive avec ce client
+		final Reponse reponsePositive = new Reponse();
 		reponsePositive.setClient(client);
 		reponsePositive.setStatut(true);
-		//persister la reponse
-		this.repservice.create(reponsePositive);	
-		
+		reponsePositive.setNouveauClient(true);
+		// persister la reponse
+		this.repservice.create(reponsePositive);
+
 		return result;
 	}
-	
+
 	/**
 	 * Vérifier numero de compte et creer une reponse avec le client récupéré du DAO
 	 * si ok sinon retourne false
