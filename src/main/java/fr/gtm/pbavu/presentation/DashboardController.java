@@ -134,7 +134,7 @@ public class DashboardController {
 
 		DashboardController.LOGGER.debug("CONTROL j'ai mis les sondages dans le model");
 		model.addAttribute("sondages", sondages);
-		
+
 		return "index";
 	}
 

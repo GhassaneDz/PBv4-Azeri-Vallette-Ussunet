@@ -12,13 +12,12 @@ import javax.persistence.Id;
  * @author AZERI-VALLETTE-USSUNET
  *
  */
-
 @Entity
 public class Client implements fr.gtm.pbavu.domain.Entity {
 
 	/**
-	 * l'id représente l'identifaint unique utiliser dans la base de donnée; 
-	 * il est generer par la base de donnée lors de la création d'un  nouveau Client
+	 * l'id représente l'identifaint unique utiliser dans la base de donnée; il est
+	 * generer par la base de donnée lors de la création d'un nouveau Client
 	 */
 	@Id
 	@Column
@@ -42,7 +41,7 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 	 */
 	@Column(nullable = true)
 	private String numero;
-	
+
 	/**
 	 * numero designe le numéro d'identifacation unique d'un client
 	 */
@@ -55,19 +54,12 @@ public class Client implements fr.gtm.pbavu.domain.Entity {
 	@Column(nullable = true)
 	private String telephone;
 
-	
-	
-	
 	/**
 	 * Constructeur par défaut
 	 */
 	public Client() {
-		//Constructeur par defaut
+		// Constructeur par defaut
 	}
-	
-	
-	
-	
 
 	@Override
 	public Integer getId() {
