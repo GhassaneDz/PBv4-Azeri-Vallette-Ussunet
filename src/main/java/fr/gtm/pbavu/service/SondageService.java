@@ -90,4 +90,25 @@ public class SondageService extends CRUDService<Sondage> {
 		return result;
 	}
 
+	/**
+	 * Cette méthode vérifie qu'aucun sondage existant se déroule dans les dates du
+	 * sondage créé.
+	 *
+	 * @param dateDebut
+	 *            Date de début du nouveau sondage.
+	 * @param dateFin
+	 *            Date de fin du nouveau sondage.
+	 * @return sondage Renvoi un sondage s'il existe.
+	 */
+	public Sondage verifSondageIntoNew(final LocalDate dateDebut, final LocalDate dateFin) {
+		Sondage result = null;
+		final List<Sondage> sondages = this.repo.findAll();
+		for (final Sondage sondage : sondages) {
+			if (sondage.getDateDebut().isAfter(dateDebut) && sondage.getDateDebut().isBefore(dateFin)
+					|| sondage.getDateFermeture().isAfter(dateDebut) && sondage.getDateFermeture().isBefore(dateFin)) {
+				result = sondage;
+			}
+		}
+		return result;
+	}
 }

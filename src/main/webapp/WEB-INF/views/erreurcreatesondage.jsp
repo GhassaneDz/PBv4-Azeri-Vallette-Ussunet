@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="alert alert-danger col-10 mx-auto" role="alert">
-		<strong>Oops!</strong> Il existe déjà un sondage pendant le nouveau sondage, création du nouveau sondage abandonné.
+		<strong>Oops!</strong> Plusieurs Sondages se chevauchent, merci de ressaisir les dates du sondage à créer.
 	</div>
 	<div class="raw">
 		<a href="<c:url value="/index.html" />"><button

@@ -53,14 +53,19 @@ public class DashboardController {
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFin) {
 		String result = null;
 		final Sondage sondage = new Sondage();
-		Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
-		if (sondageExist.equals(null)) {
-			sondageExist = this.sondService.getActualSondage(dateFin);
+		final Sondage sondageIn = this.sondService.verifSondageIntoNew(dateDebut, dateFin);
+		if (sondageIn.equals(null)) {
+			Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
 			if (sondageExist.equals(null)) {
-				sondage.setDateDebut(dateDebut);
-				sondage.setDateFin(dateFin);
-				this.sondService.create(sondage);
-				result = "redirect:/index.html";
+				sondageExist = this.sondService.getActualSondage(dateFin);
+				if (sondageExist.equals(null)) {
+					sondage.setDateDebut(dateDebut);
+					sondage.setDateFin(dateFin);
+					this.sondService.create(sondage);
+					result = "redirect:/index.html";
+				} else {
+					result = "redirect:/erreurcreatesondage.html";
+				}
 			} else {
 				result = "redirect:/erreurcreatesondage.html";
 			}
