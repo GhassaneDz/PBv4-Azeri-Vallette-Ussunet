@@ -21,34 +21,14 @@
 <title>Tableau de bord</title>
 
 </head>
-
 <body>
-
-	<div class="container">
-		<div class="col-10 mx-auto">
-
-
-
-			<div class="row d-flex flex-column">
-
-				<h1 class="text-primary mx-auto">Fermeture du sondage N° ${id}</h1>
-
-				<form method="post">
-					<div class="form-group">
-						<label for="datefermeture">Date de fermeture</label><span>Date
-							de fermeture prévisionnelle : ${dateFermeture}</span> <input
-							name="dateFermeture" type="date" class="form-control"
-							id="datefermeture" required>
-					</div>
-					<button type="submit" class="btn btn-primary mb-2">Valider</button>
-				</form>
-			</div>
-		</div>
+	<div class="alert alert-danger col-10 mx-auto" role="alert">
+		<strong>Oops!</strong> Plusieurs Sondages se chevauchent, merci de ressaisir les dates du sondage à créer.
 	</div>
-
-
-
-
+	<div class="raw">
+		<a href="<c:url value="/index.html" />"><button
+				class="btn btn-primary mx-auto">Liste des Sondages</button></a>
+	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -64,5 +44,4 @@
 		crossorigin="anonymous"></script>
 
 </body>
-
 </html>

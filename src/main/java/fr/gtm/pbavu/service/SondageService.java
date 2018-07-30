@@ -54,7 +54,7 @@ public class SondageService extends CRUDService<Sondage> {
 			final Sondage actualSondage = tempSondage.get();
 
 			SondageService.LOGGER.debug("j'ai récupéré le sondage actuel");
-			SondageService.LOGGER.debug("DAte de début de sondage recupérer !");
+			SondageService.LOGGER.debug("DAte de début de sondage recupérer !" + actualSondage.getDateDebut());
 			// verifier si le sondage est en cours
 			// si le sondage est en cours ajouter dateFermeture et return true
 			if (dateFermeture.isAfter(actualSondage.getDateDebut())
@@ -103,6 +103,28 @@ public class SondageService extends CRUDService<Sondage> {
 		// récupère le nbre de jour de l'intervalle
 		result = intervalPeriod.getDays();
 
+		return result;
+	}
+
+	/**
+	 * Cette méthode vérifie qu'aucun sondage existant se déroule dans les dates du
+	 * sondage créé.
+	 *
+	 * @param dateDebut
+	 *            Date de début du nouveau sondage.
+	 * @param dateFin
+	 *            Date de fin du nouveau sondage.
+	 * @return sondage Renvoi un sondage s'il existe.
+	 */
+	public Sondage verifSondageIntoNew(final LocalDate dateDebut, final LocalDate dateFin) {
+		Sondage result = null;
+		final List<Sondage> sondages = this.repo.findAll();
+		for (final Sondage sondage : sondages) {
+			if (sondage.getDateDebut().isAfter(dateDebut) && sondage.getDateDebut().isBefore(dateFin)
+					|| sondage.getDateFermeture().isAfter(dateDebut) && sondage.getDateFermeture().isBefore(dateFin)) {
+				result = sondage;
+			}
+		}
 		return result;
 	}
 
