@@ -49,10 +49,10 @@ public class SondageService extends CRUDService<Sondage> {
 			final Sondage actualSondage = tempSondage.get();
 
 			SondageService.LOGGER.debug("j'ai récupéré le sondage actuel");
-			SondageService.LOGGER.debug("DAte de début" + actualSondage.getDateDebut());
+			SondageService.LOGGER.debug("DAte de début de sondage recupérer !");
 			// verifier si le sondage est en cours
 			// si le sondage est en cours ajouter dateFermeture et return true
-			if (actualSondage != null && dateFermeture.isAfter(actualSondage.getDateDebut())
+			if (dateFermeture.isAfter(actualSondage.getDateDebut())
 					&& dateFermeture.isBefore(actualSondage.getDateFin())) {
 				actualSondage.setDateFermeture(dateFermeture);
 				this.edit(actualSondage);
