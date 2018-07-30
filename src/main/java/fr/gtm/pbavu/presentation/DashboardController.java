@@ -54,7 +54,6 @@ public class DashboardController {
 		String result = null;
 		final Sondage sondage = new Sondage();
 		Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
-		sondageExist = this.sondService.getActualSondage(dateFin);
 		if (sondageExist.equals(null)) {
 			sondageExist = this.sondService.getActualSondage(dateFin);
 			if (sondageExist.equals(null)) {
