@@ -1,5 +1,7 @@
 package fr.gtm.pbavu.presentation;
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,19 +51,6 @@ public class ClientController {
 
 	/**
 	 *
-	 * @param numero
-	 * @return
-	 */
-	@GetMapping("/find/{numero}")
-	@ResponseBody
-	public Client findClient(@PathVariable final String numero) {
-
-		final Client result = this.service.verfierNumero(numero);
-		return result;
-	}
-
-	/**
-	 *
 	 * @param id
 	 *            identifiant du client
 	 * @return un client
@@ -72,5 +61,21 @@ public class ClientController {
 
 		return this.service.read(id);
 	}
+	
+	/**
+	 * 
+	 * @param numero numero d'identifaction d'un client
+	 * @return vrai ou faux si le client existe dans la base de donnée
+	 */
+	//trouver un client dans la base
+	@GetMapping("/find/{numero}")
+	@ResponseBody
+	public Boolean findClient(@PathVariable String numero ) {
+		
+		final boolean result = this.service.verfierNumero(numero);
+		return result;
+	}
+	
+
 
 }
