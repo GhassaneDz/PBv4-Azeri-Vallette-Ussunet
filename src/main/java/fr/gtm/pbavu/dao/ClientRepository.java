@@ -18,13 +18,24 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 	// public Client findByNumero(String numero);
 
+	/**
+	 * Requête en base de données permettant de récupérer un client par ses nom et
+	 * prénom.
+	 *
+	 * @param nom
+	 *            nom du client à rechercher.
+	 * @param prenom
+	 *            prenom du client à rechercher.
+	 * @return client revoi le client trouvé.
+	 */
 	Client findByNomAndPrenom(String nom, String prenom);
 
 	/**
 	 * Requête permettant de renvoyer un client existant grâce à son numero client
 	 *
 	 * @param numero
-	 * @return
+	 *            numéro client à trouver en base.
+	 * @return client le client retrouvé par la requête.
 	 */
 	Client findByNumero(String numero);
 

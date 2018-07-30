@@ -45,8 +45,10 @@ public class DashboardController {
 	 * de début et de fin
 	 *
 	 * @param dateDebut
+	 *            Date de début du sondage à créer.
 	 * @param dateFin
-	 * @return
+	 *            Date de fin du sondage à créer.
+	 * @return redirection redirect vers vue erreur ou sur l'index.
 	 */
 	@PostMapping({ "/index", "/" })
 	public String creatSondage(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateDebut,
@@ -76,8 +78,9 @@ public class DashboardController {
 	 * Permet d'afficher la JSP qui affiche les détails d'un sondage
 	 *
 	 * @param idSondage
+	 *            id du sondage à afficher.
 	 * @param model
-	 * @return
+	 * @return redirection redirect vers la vue détail du sondage.
 	 */
 	@RequestMapping({ "/detail" })
 	public String detail(@RequestParam("id") final Integer idSondage, final Model model) {
@@ -95,7 +98,7 @@ public class DashboardController {
 	}
 
 	/**
-	 *
+	 * Redirection vers vue erreur.
 	 *
 	 * @return vueErreurCreateSondage Revoi vers la jsp correspondante.
 	 */
@@ -105,7 +108,7 @@ public class DashboardController {
 	}
 
 	/**
-	 *
+	 * Redirection vers vue erreur.
 	 *
 	 * @return vueErreurDate Revoi vers la jsp correspondante.
 	 */
@@ -118,6 +121,7 @@ public class DashboardController {
 	 * Permet l'affichage de la page de fermeture d'un sondage
 	 *
 	 * @param id
+	 *            id du sondage à fermer.
 	 */
 	@RequestMapping("/fermeture")
 	public String fermeture(@RequestParam("id") final Integer idSondage, @RequestParam("isOpen") final Boolean isOpen,
@@ -133,8 +137,10 @@ public class DashboardController {
 	 * l'utilisateur
 	 *
 	 * @param dateFermeture
+	 *            date de fermeture du sondage.
 	 * @param idSondage
-	 * @return
+	 *            id du sondage à cloturer.
+	 * @return redirection redirect vers vue erreur ou index.
 	 */
 	@PostMapping("/fermeture")
 	public String fermeturePost(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture,

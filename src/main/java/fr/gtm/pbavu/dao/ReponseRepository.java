@@ -39,7 +39,9 @@ public interface ReponseRepository extends JpaRepository<Reponse, Integer> {
 	 * Requête permettant la liste des réponses positives à un sondage
 	 *
 	 * @param id
-	 * @return
+	 *            L'id du sondage dont on veut récupérer les réponses.
+	 * @return List<Reponse> Retourne la liste de réponses du sondage d'id entré en
+	 *         param.
 	 */
 	@Query(value = " SELECT * FROM `reponse` WHERE `id_sondage`=?1 AND `statut` = 1 ", nativeQuery = true)
 	List<Reponse> findRepoByPos(Integer id);

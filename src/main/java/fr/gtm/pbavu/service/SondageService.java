@@ -91,6 +91,12 @@ public class SondageService extends CRUDService<Sondage> {
 		return result;
 	}
 
+	/**
+	 * Méthode permettant de calculer le nombre de jours entre la date du jour et la
+	 * date de fin du sondage en cours.
+	 *
+	 * @return Integer le nombre de jours calculé.
+	 */
 	public Integer getNbJour() {
 		SondageService.LOGGER.debug("Sondage Service bonjour je calcule le nbre de jours");
 		final LocalDate dateDujour = LocalDate.now();
