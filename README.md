@@ -4,6 +4,9 @@
 * Date : 29/07/2018
 * Créateurs : Badr Azeri, Quentin Ussunet, Arnaud Vallette
 
+Proxibaqnue V4 est une application Web permettant la création et le suivi des sondages réaliser auprés des clients de Proxibanque, la partie back-end permet de gérer les sondages, et la partie Front-end, est dédier aux client qui participent aux sondages
+
+
 # Lancement de l'application
 
 ## Pré-requis :
@@ -31,14 +34,15 @@ Si vous voulez utilisez les WebServices vous pouvez déployé le projet Angular 
 
 # Exemple d'utilisation
 
-TODO modif cas d'utilisation de l'interface de Gestion des sondages :
+### 1- Crée un sondage
+Création d'un sondage avec une date d'ouverture et une date de Fin.
 
-### 1- Ouvrir un sondage
+### 2- Ouvrir un sondage
 
-### 2- Consulter les détails d'un sondage :
+### 3- Consulter les détails d'un sondage :
 Possibilité de voir le nombre de répondant (reponse négative et positive), le nombre de nouveau client.
 
-### 3 - Fermeture d'un sondage :
-Possibilité de fermer un sondage si il est en cours.
+### 4- Fermeture d'un sondage :
+Possibilité de fermer un sondage en cours.
 
 # ===================================================
