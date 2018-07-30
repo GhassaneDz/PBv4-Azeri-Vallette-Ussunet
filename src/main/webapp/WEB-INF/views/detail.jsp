@@ -27,13 +27,13 @@
 	<div class="container">
 		<div class="col-10 mx-auto">
 			<div class="row d-flex flex-column">
-				<h1 class="text-primary mx-auto">Historique des Sondages</h1>
-				<div class="card mx-auto" style="width: 18rem;">
-					<div class="table-primary text-white">Sondage N° ${idSond} </div>
+				<h1 class="text-primary mx-auto">Etat des Réponses</h1>
+				<div class="card mx-auto mt-2" style="width: 18rem;">
+					<div class="table-primary text-white text-center"><h2>Sondage N° ${idSond}</h2></div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">Nombre d'Avis positif : ${aviOk} </li>
-						<li class="list-group-item">Nombre d'Avis négatif : ${aviNot} </li>
-						<li class="list-group-item">Nouveau Clients : ${nbClient} </li>
+						<li class="list-group-item">Nombre d'Avis positif : <span class="badge badge-pill badge-success">${aviOk}</span> </li>
+						<li class="list-group-item">Nombre d'Avis négatif : <span class="badge badge-pill badge-danger">${aviNot}</span> </li>
+						<li class="list-group-item">Nouveau Clients : <span class="badge badge-pill badge-primary">${nbClient}</span> </li>
 					</ul>
 				</div>
 				<table class="table">
