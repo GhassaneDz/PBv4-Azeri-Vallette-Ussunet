@@ -1,6 +1,7 @@
 package fr.gtm.pbavu.service;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,6 +88,21 @@ public class SondageService extends CRUDService<Sondage> {
 				result = sondage;
 			}
 		}
+		return result;
+	}
+
+	public Integer getNbJour() {
+		SondageService.LOGGER.debug("Sondage Service bonjour je calcule le nbre de jours");
+		final LocalDate dateDujour = LocalDate.now();
+		Integer result = null;
+		Sondage sondageCourant;
+
+		sondageCourant = this.getActualSondage(dateDujour);
+
+		final Period intervalPeriod = Period.between(dateDujour, sondageCourant.getDateFin());
+		// récupère le nbre de jour de l'intervalle
+		result = intervalPeriod.getDays();
+
 		return result;
 	}
 
