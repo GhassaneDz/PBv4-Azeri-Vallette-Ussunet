@@ -52,25 +52,22 @@ public class DashboardController {
 	public String creatSondage(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateDebut,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFin) {
 		String result = null;
-		final Sondage sondage = new Sondage();
-		final Sondage sondageIn = this.sondService.verifSondageIntoNew(dateDebut, dateFin);
-		if (sondageIn.equals(null)) {
-			Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
-			if (sondageExist.equals(null)) {
-				sondageExist = this.sondService.getActualSondage(dateFin);
-				if (sondageExist.equals(null)) {
-					sondage.setDateDebut(dateDebut);
-					sondage.setDateFin(dateFin);
-					this.sondService.create(sondage);
-					result = "redirect:/index.html";
-				} else {
-					result = "redirect:/erreurcreatesondage.html";
-				}
+		Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
+		sondageExist = this.sondService.getActualSondage(dateFin);
+		if (sondageExist != null) {
+			result = "redirect:/erreurcreatesondage.html";
+		} else {
+			sondageExist = this.sondService.getActualSondage(dateFin);
+			if (sondageExist != null) {
+				result = "redirect:/erreurcreatesondage.html";
 			} else {
 				result = "redirect:/erreurcreatesondage.html";
+				final Sondage sondage = new Sondage();
+				sondage.setDateDebut(dateDebut);
+				sondage.setDateFin(dateFin);
+				this.sondService.create(sondage);
+				result = "redirect:/index.html";
 			}
-		} else {
-			result = "redirect:/erreurcreatesondage.html";
 		}
 		return result;
 	}
