@@ -44,4 +44,17 @@ public class SondageController {
 		return result;
 	}
 
+	/**
+	 * permet de répondre à la demande du nbre de jour avant la fermeture d'un
+	 * sondage
+	 *
+	 * @return Un nombre de jour avant la fin du sondage en cours ou null
+	 */
+	@GetMapping("/nbjour")
+	public Integer nbJourContact() {
+		Integer result = null;
+		result = this.sondageService.getNbJour();
+		return result;
+	}
+
 }
