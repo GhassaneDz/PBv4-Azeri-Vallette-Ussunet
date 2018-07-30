@@ -1,13 +1,12 @@
-
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`mail`, `nom`, `numero`, `prenom`, `telephone`) VALUES
-('blabla@chuchu.fr', 'BLA', '12345678', 'Blah', '0147200001'),
-('dearSanta@fromNorth.com', 'Panoel', '98765432', 'Petitpa', '0666666666'),
-('avdv75@gmial.com', 'Vallette', '10000000', 'Arnaud', '0123456789'),
-('badrdegtm@live.fr', 'Azeri', '20000000', 'Badr', '0198765432');
+('fabien@orange.com', 'USSUNET', '12345678', 'Quentin', '0147200001'),
+('Hugo@gmail.fr', 'Panoel', '98765432', 'Petitpa', '0682894761'),
+('mendy@bbox.fr', 'Vallette', '10000000', 'Arnaud', '0123456789'),
+('fafa@yahoo.fr', 'ROMAN', '20000000', 'Steven', '0198765432');
 
 -- --------------------------------------------------------
 
@@ -32,8 +31,8 @@ INSERT INTO `reponse` (`commentaire`, `statut`, `id_client`, `id_sondage`) VALUE
 --
 
 INSERT INTO `sondage` (`dateDebut`, `dateFermeture`, `dateFin`) VALUES
-('2018-07-01', '2018-07-15', '2018-07-15'),
-('2018-05-02', '2018-07-30', '2018-07-27');
+('2018-07-01', NULL, '2018-08-15'),
+('2018-05-02', '2018-07-20', '2018-07-27');
 
 
 
