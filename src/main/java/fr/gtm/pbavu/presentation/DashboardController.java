@@ -51,12 +51,24 @@ public class DashboardController {
 	@PostMapping({ "/index", "/" })
 	public String creatSondage(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateDebut,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFin) {
-
+		String result = null;
 		final Sondage sondage = new Sondage();
-		sondage.setDateDebut(dateDebut);
-		sondage.setDateFin(dateFin);
-		this.sondService.create(sondage);
-		return "redirect:/index.html";
+		Sondage sondageExist = this.sondService.getActualSondage(dateDebut);
+		sondageExist = this.sondService.getActualSondage(dateFin);
+		if (sondageExist.equals(null)) {
+			sondageExist = this.sondService.getActualSondage(dateFin);
+			if (sondageExist.equals(null)) {
+				sondage.setDateDebut(dateDebut);
+				sondage.setDateFin(dateFin);
+				this.sondService.create(sondage);
+				result = "redirect:/index.html";
+			} else {
+				result = "redirect:/erreurcreatesondage.html";
+			}
+		} else {
+			result = "redirect:/erreurcreatesondage.html";
+		}
+		return result;
 	}
 
 	/**
@@ -79,6 +91,26 @@ public class DashboardController {
 		model.addAttribute("aviNot", aviNot);
 		model.addAttribute("nbClient", nbClient);
 		return "detail";
+	}
+
+	/**
+	 *
+	 *
+	 * @return vueErreurCreateSondage Revoi vers la jsp correspondante.
+	 */
+	@RequestMapping("/erreurcreatesondage")
+	public String erreurCreateSondage() {
+		return "erreurcreatesondage";
+	}
+
+	/**
+	 *
+	 *
+	 * @return vueErreurDate Revoi vers la jsp correspondante.
+	 */
+	@RequestMapping("/erreurdate")
+	public String erreurDate() {
+		return "erreurdate";
 	}
 
 	/**
@@ -112,9 +144,7 @@ public class DashboardController {
 		if (isOpen) {
 			view.append("redirect:/index.html");
 		} else {
-			view.append("redirect:fermeture.html?id=");
-			view.append(idSondage.toString());
-			model.addAttribute("isOpen", isOpen);
+			view.append("redirect:/erreurdate.html");
 		}
 
 		final String result = view.toString();

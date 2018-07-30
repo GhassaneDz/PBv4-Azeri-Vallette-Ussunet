@@ -30,18 +30,32 @@ public class ClientService extends CRUDService<Client> {
 	@Autowired
 	private SondageService sonService;
 
+	/**
+	 * Méthode permettant de créer un nouveau client et d'enregistrer une réponse au
+	 * sondage.
+	 *
+	 * @param client
+	 *            Infos client entrée front.
+	 * @return client Retourne le client persisté en base de donnée pour passer
+	 *         l'id.
+	 */
 	public Client createClientRep(final Client client) {
+
 		Client result = null;
+		final Reponse reponsePositive = new Reponse();
+		final LocalDate actualDate = LocalDate.now();
 		// sauvegardé le client
 		this.repo.save(client);
 		result = this.repo.findByNomAndPrenom(client.getNom(), client.getPrenom());
 		// creer une reponse positive avec ce client
-		final Reponse reponsePositive = new Reponse();
-		reponsePositive.setClient(client);
+		reponsePositive.setClient(result);
 		reponsePositive.setStatut(true);
 		reponsePositive.setNouveauClient(true);
+		reponsePositive.setSondage(this.sonService.getActualSondage(actualDate));
+		ClientService.LOGGER.debug("statut nouveau client : " + reponsePositive.getNouveauClient());
 		// persister la reponse
 		this.repservice.create(reponsePositive);
+		ClientService.LOGGER.debug("réponse enregistrée : " + reponsePositive);
 
 		return result;
 	}
