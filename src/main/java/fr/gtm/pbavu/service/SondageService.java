@@ -13,8 +13,9 @@ import fr.gtm.pbavu.dao.SondageRepository;
 import fr.gtm.pbavu.domain.Sondage;
 
 /**
- * Le SondageService est le service apparenté l'entité Sondage
- * 
+ * Service permettant de traiter tout ce qui concerne les sondages (sondage en
+ * cours, fermeture...)
+ *
  * @author AZERI-VALLETTE-USSUNET
  *
  */
@@ -32,11 +33,13 @@ public class SondageService extends CRUDService<Sondage> {
 	}
 
 	/**
-	 * 
-	 * cette methode permet de férmer un sondage ouvert
+	 *
+	 * cette methode permet de fermer un sondage ouvert
+	 *
 	 * @param id
 	 *            l'id d'un sondage
-	 * @param dateFermeture  date de fermiture d'un sondage
+	 * @param dateFermeture
+	 *            date de fermeture d'un sondage
 	 * @return false si il n'y a pas de sondage ouvert, true si il existe un sondage
 	 *         ouvert
 	 */
@@ -45,14 +48,15 @@ public class SondageService extends CRUDService<Sondage> {
 		final Optional<Sondage> tempSondage;
 		tempSondage = this.repo.findById(id);
 
+		// si un sondage a été récupéré par le DAO
 		if (tempSondage.isPresent()) {
 			final Sondage actualSondage = tempSondage.get();
 
 			SondageService.LOGGER.debug("j'ai récupéré le sondage actuel");
-			SondageService.LOGGER.debug("DAte de début" + actualSondage.getDateDebut());
+			SondageService.LOGGER.debug("DAte de début de sondage recupérer !");
 			// verifier si le sondage est en cours
 			// si le sondage est en cours ajouter dateFermeture et return true
-			if (actualSondage != null && dateFermeture.isAfter(actualSondage.getDateDebut())
+			if (dateFermeture.isAfter(actualSondage.getDateDebut())
 					&& dateFermeture.isBefore(actualSondage.getDateFin())) {
 				actualSondage.setDateFermeture(dateFermeture);
 				this.edit(actualSondage);
@@ -66,13 +70,17 @@ public class SondageService extends CRUDService<Sondage> {
 
 	/**
 	 * cette methode vérifie s'il existe sondage ouvert a la date actuel
-	 * @param actualDate la date actuel 
-	 * @return le Sondage actuel
+	 *
+	 * @param actualDate
+	 *            la date actuel
+	 * @return Sondage sondage en cours ou null
 	 */
 	public Sondage getActualSondage(final LocalDate actualDate) {
 		Sondage result = null;
+		// récupère l'ensemble des sondage dans une liste
 		final List<Sondage> sondages = this.repo.findAll();
 		for (final Sondage sondage : sondages) {
+			// vérifie si la date saisie est comprise dans la période d'un des sondages
 			if (actualDate.isAfter(sondage.getDateDebut()) == true
 					&& actualDate.isBefore(sondage.getDateFin()) == true) {
 				SondageService.LOGGER.debug("j'ai parcouru un sondage");

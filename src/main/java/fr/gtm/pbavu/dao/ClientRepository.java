@@ -8,7 +8,7 @@ import fr.gtm.pbavu.domain.Client;
 /**
  * L'interface ClientRepository permet d'accorder une entité Client à un JPA
  * repository
- * 
+ *
  * @author AZERI-VALLETTE-USSUNET
  *
  */
@@ -20,6 +20,12 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 	Client findByNomAndPrenom(String nom, String prenom);
 
+	/**
+	 * Requête permettant de renvoyer un client existant grâce à son numero client
+	 *
+	 * @param numero
+	 * @return
+	 */
 	Client findByNumero(String numero);
 
 }

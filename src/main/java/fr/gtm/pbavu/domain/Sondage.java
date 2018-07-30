@@ -25,28 +25,23 @@ public class Sondage implements fr.gtm.pbavu.domain.Entity {
 	private LocalDate dateDebut;
 
 	/**
-	 * Date saisie par l'utilisateur pour fermer le sondage avant sa date de fin
+	 * Date saisie par l'utilisateur pour fermer le sondage
 	 */
 	private LocalDate dateFermeture;
-	
+
 	/**
 	 * Date programmée de fermeture
 	 */
 	private LocalDate dateFin;
 
 	/**
-	 * l'id représente l'identifaint unique utiliser dans la base de donnée; 
-	 * il est génerer par la base de donnée lors de l'ajout d'une nouveau sodage
+	 * Identifiant du sondage créé par la banque
 	 */
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	
-	
-	
-	
 	/**
 	 *
 	 * @return date de début du Sondage

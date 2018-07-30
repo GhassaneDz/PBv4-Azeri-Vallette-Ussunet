@@ -1,5 +1,7 @@
 package fr.gtm.pbavu.presentation;
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,21 +43,20 @@ public class ClientController {
 	@PostMapping({ "", "/" })
 	@ResponseBody
 	public Client add(@RequestBody final Client client) {
-		ClientController.LOGGER.debug("Client ajouter !!", client.getNom(), client.getPrenom(), client.getMail(),
-				client.getNumero());
+		ClientController.LOGGER.debug("Client ajouter !!");
 
 		return this.service.createClientRep(client);
 	}
 
 	/**
 	 *
-	 * @param numero
-	 * @return
+	 * @param numero  numéro d'identification d'un client
+	 * @return l'objet client
 	 */
 	@GetMapping("/find/{numero}")
 	@ResponseBody
 	public Client findClient(@PathVariable final String numero) {
-		ClientController.LOGGER.debug("on a le numero ! : " + numero);
+		ClientController.LOGGER.debug("on a le numero ! ");
 		final Client result = this.service.verfierNumero(numero);
 		return result;
 	}
@@ -72,5 +73,8 @@ public class ClientController {
 
 		return this.service.read(id);
 	}
+	
+	
+
 
 }

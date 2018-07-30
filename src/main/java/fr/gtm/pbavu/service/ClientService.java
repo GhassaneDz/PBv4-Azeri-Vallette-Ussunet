@@ -58,7 +58,7 @@ public class ClientService extends CRUDService<Client> {
 		Client existClient = null;
 		existClient = this.repo.findByNumero(numero);
 
-		ClientService.LOGGER.debug("Je recherche " + numero + " " + existClient);
+		ClientService.LOGGER.debug("Numéro Client trouver! ");
 
 		if (existClient != null) {
 
@@ -69,7 +69,7 @@ public class ClientService extends CRUDService<Client> {
 			reponse.setClient(existClient);
 			final LocalDate actualDate = LocalDate.now();
 			reponse.setSondage(this.sonService.getActualSondage(actualDate));
-			ClientService.LOGGER.debug("JESUISPASSSSSSSSSSSS");
+			ClientService.LOGGER.debug("JE SUIS PASSER ICI !");
 			this.repservice.create(reponse);
 		}
 
