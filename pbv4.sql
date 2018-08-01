@@ -17,7 +17,7 @@ INSERT INTO `client` (`mail`, `nom`, `numero`, `prenom`, `telephone`) VALUES
 
 INSERT INTO `sondage` (`dateDebut`, `dateFermeture`, `dateFin`) VALUES
 ('2018-07-01', NULL, '2018-08-15'),
-('2018-05-02', '2018-07-20', '2018-06-30');
+('2018-05-02', '2018-07-20', '2018-07-18');
 
 
 -- --------------------------------------------------------
