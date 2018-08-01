@@ -1,7 +1,5 @@
 package fr.gtm.pbavu.presentation;
 
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +33,8 @@ public class ClientController {
 	private ClientService service;
 
 	/**
+	 * Récupère les infos du front pour l'enregistrement d'un nouveau client +
+	 * création de la réponse associée.
 	 *
 	 * @param client
 	 *            client de type Client
@@ -49,8 +49,11 @@ public class ClientController {
 	}
 
 	/**
+	 * Méthode permettant de retrouver un client existant par son numéro client afin
+	 * d'enregistrer sa réponse au sondage.
 	 *
-	 * @param numero  numéro d'identification d'un client
+	 * @param numero
+	 *            numéro d'identification d'un client
 	 * @return l'objet client
 	 */
 	@GetMapping("/find/{numero}")
@@ -73,8 +76,5 @@ public class ClientController {
 
 		return this.service.read(id);
 	}
-	
-	
-
 
 }

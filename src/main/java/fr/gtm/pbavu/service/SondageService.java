@@ -91,6 +91,12 @@ public class SondageService extends CRUDService<Sondage> {
 		return result;
 	}
 
+	/**
+	 * Méthode permettant de calculer le nombre de jours entre la date du jour et la
+	 * date de fin du sondage en cours.
+	 *
+	 * @return Integer le nombre de jours calculé.
+	 */
 	public Integer getNbJour() {
 		SondageService.LOGGER.debug("Sondage Service bonjour je calcule le nbre de jours");
 		final LocalDate dateDujour = LocalDate.now();
@@ -106,30 +112,6 @@ public class SondageService extends CRUDService<Sondage> {
 		return result;
 	}
 
-	// /**
-	// * Cette méthode vérifie qu'aucun sondage existant se déroule dans les dates
-	// du
-	// * sondage créé.
-	// *
-	// * @param dateDebut
-	// * Date de début du nouveau sondage.
-	// * @param dateFin
-	// * Date de fin du nouveau sondage.
-	// * @return sondage Renvoi un sondage s'il existe.
-	// */
-	// public Sondage verifSondageIntoNew(final LocalDate dateDebut, final LocalDate
-	// dateFin) {
-	// Sondage result = null;
-	// final List<Sondage> sondages = this.repo.findAll();
-	// for (final Sondage sondage : sondages) {
-	// if (sondage.getDateDebut().isAfter(dateDebut) &&
-	// sondage.getDateDebut().isBefore(dateFin)
-	// || sondage.getDateFin().isAfter(dateDebut) &&
-	// sondage.getDateFin().isBefore(dateFin)) {
-	// result = sondage;
-	// }
-	// }
-	// return result;
-	// }
+	
 
 }

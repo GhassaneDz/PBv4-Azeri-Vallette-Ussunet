@@ -4,7 +4,7 @@
 * Date : 29/07/2018
 * Créateurs : Badr Azeri, Quentin Ussunet, Arnaud Vallette
 
-Proxibaqnue V4 est une application Web permettant la création et le suivi des sondages réaliser auprés des clients de Proxibanque, la partie back-end permet de gérer les sondages, et la partie Front-end, est dédier aux client qui participent aux sondages
+Proxibaqnue V4 est une application Web permettant la création et le suivi des sondages réaliser auprés des clients de Proxibanque, la partie back-end permet de gérer les sondages, et la partie Front-end, est dédiée aux client qui participent aux sondages
 
 
 # Lancement de l'application
@@ -25,10 +25,10 @@ Pour le back-end :
 * créer une BDD **pbv4** MySQL en encodage UTF8 moteur InnoDB
 * user :"root", mot de passe :""
 * déployer une première fois l'application sur TomCat, le schéma de BDD sera créé automatiquement.
-* importer le fichier proxibanquejpa.sql dans la BDD
+* importer le fichier pbv4.sql dans la BDD
 * Consulter le navigateur: localhost:8080/proxibanquev4/
 
-Si vous voulez utilisez les WebServices vous pouvez déployé le projet Angular correspondant
+Si vous voulez utilisez les WebServices vous pouvez déployer le projet Angular correspondant
 [ProxyFront](https://github.com/AV-DV-87/proxyfront)
 
 
